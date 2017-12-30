@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 lat = String(position.coords["latitude"]);
                 long = String(position.coords["longitude"]);
                 coords = "?lat="+ lat + "&lon=" + long;
-                urlByLocation = "http://api.openweathermap.org/data/2.5/weather" + coords + apiKey + units
+                urlByLocation = "https://api.openweathermap.org/data/2.5/weather" + coords + apiKey + units
                 if (DOMContentJustLoaded) {
                     getWeather("byLocation");
                 }
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let cityInput = document.getElementById("city_input").value
         cityName = cityInput
         city = "?q=" + cityName
-        urlByCity = "http://api.openweathermap.org/data/2.5/weather" + city + apiKey + units
+        urlByCity = "https://api.openweathermap.org/data/2.5/weather" + city + apiKey + units
         document.getElementById("city_input").value = ""
     };
 
