@@ -1,2 +1,3 @@
 # hows_weather
-an
+an exercise with ajax (+ tsv reading in python)
+
