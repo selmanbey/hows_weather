@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("right_side").innerHTML = "<p class=\"background\">" + background + "</p>";
     }
 
+    
     getCoordinates();
     getRandomBackground();
 
