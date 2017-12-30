@@ -16,6 +16,7 @@ body {
     overflow: hidden;
     padding: 0px;
 }
+
 .container {
     flex: 1;
     text-align: center;
@@ -60,6 +61,11 @@ span {
 
 form {
     text-align: center;
+    display: inline;
+}
+
+button {
+    display: inline;
 }
 
 input {

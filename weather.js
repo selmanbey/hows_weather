@@ -56,8 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.send()
 
         xhr.onload = function() {
+
             if (xhr.status === 200) {
-                let rawData = JSON.parse(xhr.responseText)
+                let rawData = JSON.parse(xhr.responseText);
 
                 let data =  "<p> City: <span>" + rawData.name + "</span></p>" +
                 "<p> Weather Status: <span>" + rawData.weather[0].main + "</span></p>" +
@@ -65,12 +66,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 "<p> Temperature: <span>" + rawData.main.temp + "º</span></p>" +
                 "<p> Humidity: <span>" + rawData.main.humidity + "</span></p>" 
 
-                weatherDiv.innerHTML = data;
+                weatherDiv.innerHTML = data;             
 
+                let split1 = xhr.responseText.split("\"name\":\"");
+                let split2 = split1[1].split("\",\"cod\":")
+                let rawName = split2[0]
+
+                if(rawName === "") {
+                    getRandomCity();
+                    getWeather("byLocation");
+                }
+
+            } else if (xhr.status === 429) {
+                weatherDiv.innerHTML = "<p>Apparently the play time is over for now :( This website made so many API requests today and OpenWeather.com is not having it anymore. It will cool down eventually though. So let's leave it alone for a bit and we may come back again tomorrow or something.</p>"
             } else {
                 alert(xhr.statusText)
             }      
         };
+
     };
 
     function getCity() {
@@ -114,7 +127,21 @@ document.addEventListener("DOMContentLoaded", function() {
         getRandomBackground();
         DOMContentJustLoaded = false;
     });
+
+    randomizer.addEventListener("click", function() {
+        getRandomCity();
+        getWeather("byLocation");
+        getRandomBackground();
+        DOMContentJustLoaded = false;
+    });
     
+
+    function getRandomCity() {
+        lat = String(Math.random() * 90);
+        long = String(Math.random() * 90);
+        coords = "?lat="+ lat + "&lon=" + long;
+        urlByLocation = "https://api.openweathermap.org/data/2.5/weather" + coords + apiKey + units
+    }
 
 });
 
