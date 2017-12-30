@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var long = "0"
     var coords = "?lat=" + lat + "&lon=" + long
 
-    var urlByLocation = "http://api.openweathermap.org/data/2.5/weather" + coords + apiKey + units
-    var urlByCity = "http://api.openweathermap.org/data/2.5/weather" + city + apiKey + units
+    var urlByLocation = "https://api.openweathermap.org/data/2.5/weather" + coords + apiKey + units
+    var urlByCity = "https://api.openweathermap.org/data/2.5/weather" + city + apiKey + units
 
     function getCoordinates() {
         if ("geolocation" in navigator) {
